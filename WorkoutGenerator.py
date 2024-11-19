@@ -3,7 +3,26 @@ import random
 # Define workout options for each type of workout
 workouts = {
     "cardio": ["Running", "Jumping Jacks", "Burpees", "Cycling", "Jump Rope", "High Knees"],
-    "weightlifting": ["Squats", "Deadlifts", "Bench Press", "Overhead Press", "Rows", "Pull-ups"],
+    "weightlifting": {  # Muscle-specific workouts
+        "chest": ["Bench Press", "Incline Dumbbell Press", "Push-Ups", "Cable Flys", "Chest Dips", "Pec Deck", "Incline Machine Press"],
+        "shoulder": ["Overhead Press", "Lateral Raises", "Front Raises", "Arnold Press", "Face Pulls", "Seated Dumbbell Press", "Barbell Shrugs"],
+        "back": ["Pull-Ups", "Deadlifts", "Bent-Over Rows", "Lat Pulldowns", "T-Bar Rows", "Seated Cable Rows", "Reverse Flys"],
+        "arm": ["Dumbbell Curls", "Hammer Curls", "Concentration Curls", "Triceps Pushdown", "Close-Grip Bench Press", "Overhead Triceps Extension", "Barbell Curls"],
+        "biceps": ["Barbell Curls", "Incline Dumbbell Curls", "Preacher Curls", "Hammer Curls", "Cable Curls", "Reverse Curls", "Spider Curls"],
+        "glutes": ["Hip Thrusts", "Bulgarian Split Squats", "Romanian Deadlifts", "Glute Bridges", "Sumo Deadlifts", "Step-Ups", "Kettlebell Swings"],
+        "hamstring": ["Romanian Deadlifts", "Hamstring Curls", "Single-Leg Deadlifts", "Good Mornings", "Glute Ham Raises", "Leg Curls", "Sumo Squats"],
+        "human leg": ["Squats", "Lunges", "Leg Press", "Step-Ups", "Calf Raises", "Glute Bridges", "Hamstring Curls"],
+        "chest and triceps": ["Bench Press", "Incline Dumbbell Press", "Push-Ups", "Close-Grip Bench Press", "Overhead Triceps Extension", "Triceps Dips", "Chest Flys"],
+        "triceps": ["Triceps Pushdown", "Close-Grip Bench Press", "Overhead Triceps Extension", "Dumbbell Kickbacks", "Skull Crushers", "Dips", "Rope Pushdowns"],
+        "abdominals": ["Crunches", "Plank", "Leg Raises", "Bicycle Crunches", "Russian Twists", "Ab Rollouts", "Mountain Climbers"],
+        "calf": ["Standing Calf Raises", "Seated Calf Raises", "Donkey Calf Raises", "Jump Rope", "Single-Leg Calf Raises", "Box Jumps", "Calf Stretch"],
+        "quadriceps": ["Squats", "Lunges", "Leg Press", "Step-Ups", "Bulgarian Split Squats", "Front Squats", "Hack Squats"],
+        "rectus abdominis muscle": ["Plank", "Crunches", "Leg Raises", "Cable Crunches", "Ab Rollouts", "Mountain Climbers", "Sit-Ups"],
+        "core": ["Plank", "Side Plank", "Bird Dogs", "Dead Bugs", "Russian Twists", "Mountain Climbers", "Ab Rollouts"],
+        "forearm": ["Wrist Curls", "Reverse Wrist Curls", "Farmer's Walk", "Grip Strength Squeeze", "Reverse Curls", "Plate Pinches", "Towel Pull-Ups"],
+        "latissimus dorsi muscle": ["Pull-Ups", "Chin-Ups", "Lat Pulldowns", "T-Bar Rows", "Seated Cable Rows", "One-Arm Dumbbell Rows", "Bent-Over Rows"],
+        "trapezius": ["Shrugs", "Barbell Rows", "Face Pulls", "Dumbbell Lateral Raises", "Upright Rows", "Farmer's Walk", "T-Bar Rows"]
+    },
     "hiit": ["Mountain Climbers", "Sprint Intervals", "Box Jumps", "Plank Jacks", "Battle Ropes", "Jump Squats"]
 }
 
