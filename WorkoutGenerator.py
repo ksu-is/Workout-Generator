@@ -55,24 +55,29 @@ def calculate_reps(workout_type, rounds):
     if rounds < 5:
         if workout_type.lower() == "cardio":
             return "40 reps"
-        elif workout_type.lower() == "weightlifting":
-            return "10-maxout reps"
         elif workout_type.lower() == "hiit":
             return "3-4 minutes"
     elif 5 <= rounds <= 9:
         if workout_type.lower() == "cardio":
             return "30 reps"
-        elif workout_type.lower() == "weightlifting":
-            return "6-8 reps"
         elif workout_type.lower() == "hiit":
             return "2-3 minutes"
     elif rounds > 9:
         if workout_type.lower() == "cardio":
             return "20 reps"
-        elif workout_type.lower() == "weightlifting":
-            return "4-6 reps"
         elif workout_type.lower() == "hiit":
             return "1-2 minutes"
+
+def main():
+    print("Welcome to the Random Workout Generator!")
+    workout_type = input("Enter the type of workout (cardio, weightlifting, HIIT): ").lower()
+
+    if workout_type in ["cardio", "hiit"]:
+        rounds = int(input("Enter the number of rounds: "))
+        workout_routine = generate_workout(workout_type, rounds=rounds)
+        if workout_routine:
+            print("\nYour workout routine:\n")
+            print(workout_routine)
 
 def restart_program():
     answer = input("Would you like another workout suggestion? (yes/no): ").lower()
