@@ -79,27 +79,22 @@ def main():
             print("\nYour workout routine:\n")
             print(workout_routine)
 
-def restart_program():
-    answer = input("Would you like another workout suggestion? (yes/no): ").lower()
-    if answer == "yes":
-        main()
-    elif answer == "no":
-        print("Thank you for using the Random Workout Generator!!")
+elif workout_type == "weightlifting":
+        days = int(input("How many days per week do you want to train? "))
+        print("\nMuscle options:")
+        for muscle in workouts["weightlifting"].keys():
+            print(f"- {muscle.title()}")
+
+        selected_muscles = input("\nEnter the muscles you want to train (comma-separated): ").split(",")
+        selected_muscles = [muscle.strip() for muscle in selected_muscles]
+
+        workout_plan = generate_workout(workout_type, days=days, selected_muscles=selected_muscles)
+        print("\nYour weightlifting workout plan:")
+        for day, exercises in workout_plan.items():
+            print(f"{day}: {', '.join(exercises)}")
+
     else:
-        print("Invalid input. Please enter 'yes' or 'no'.")
-        restart_program()
-
-def main():
-    while True:
-        workout_type = input("Enter the type of workout (cardio, weightlifting, HIIT): ")
-        rounds = int(input("Enter the number of rounds: "))
-
-        workout_routine = generate_workout(workout_type, rounds)
-        if workout_routine:
-            print("\nYour workout routine:\n")
-            print(workout_routine)
-            restart_program()
-            break
+        print("Invalid workout type.")
 
 if __name__ == "__main__":
     main()
