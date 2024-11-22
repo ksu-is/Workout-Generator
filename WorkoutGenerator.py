@@ -26,20 +26,30 @@ workouts = {
     "hiit": ["Mountain Climbers", "Sprint Intervals", "Box Jumps", "Plank Jacks", "Battle Ropes", "Jump Squats"]
 }
 
-def generate_workout(workout_type, rounds):
-    workout_options = workouts.get(workout_type.lower())
-    if not workout_options:
-        print("Invalid workout type. Please choose from 'cardio', 'weightlifting', or 'HIIT'.")
-        return None
+def generate_workout(workout_type, rounds=None, days=None, selected_muscles=None):
+    if workout_type.lower() == "cardio" or workout_type.lower() == "hiit":
+        workout_options = workouts.get(workout_type.lower())
+        if not workout_options:
+            print("Invalid workout type.")
+            return None
 
-    reps = calculate_reps(workout_type, rounds)
+        reps = calculate_reps(workout_type, rounds)
+        workout_routine = []
+        for i in range(rounds):
+            random.shuffle(workout_options)
+            workout_routine.append(f"Round {i+1}: {', '.join(workout_options[:4])} ({reps})")
+        return "\n".join(workout_routine)
 
-    workout_routine = []
-    for i in range(rounds):
-        random.shuffle(workout_options)  # Randomize workout order for each round
-        workout_routine.append(f"Round {i+1}: {', '.join(workout_options)} ({reps})")
-
-    return "\n".join(workout_routine)
+    elif workout_type.lower() == "weightlifting":
+        workout_plan = {}
+        for day in range(1, days + 1):
+            daily_workout = []
+            for muscle in selected_muscles:
+                exercises = workouts["weightlifting"].get(muscle.lower())
+                if exercises:
+                    daily_workout += random.sample(exercises, 1)  # Add one exercise per selected muscle
+            workout_plan[f"Day {day}"] = daily_workout[:7]  # Limit to 7 exercises per day
+        return workout_plan
 
 def calculate_reps(workout_type, rounds):
     if rounds < 5:
